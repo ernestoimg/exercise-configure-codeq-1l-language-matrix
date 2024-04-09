@@ -7,13 +7,6 @@ on:
 jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - language: c,cpp
-            build-mode: manual
-          - language: csharp
-            build-mode: autobuild
  
     permissions:
       # required for all workflows
@@ -28,7 +21,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
-          languages: ${{ matrix.language }}
+          languages: go, python 
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
